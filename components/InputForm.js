@@ -16,7 +16,7 @@ const InputForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = () => {
-    if (currentValue == !"") {
+    if (currentValue !== "") {
       dispatch(addTodo(currentValue));
       setCurrentValue("");
     }
