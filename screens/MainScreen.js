@@ -1,17 +1,32 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { Platform, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import {
+  FlatList,
+  Platform,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import InputForm from "../components/InputForm";
 import TodoItem from "../components/TodoItem";
+import { useSelector } from "react-redux";
 
 const MainScreen = () => {
+  const todos = useSelector((state) => state.todo.todos); //리덕스 스토어의 상태에 접근하기 위한 후크, 선택자 함수를 인수로 사용
+  const todoTasks = todos.filter((item) => item.state === "todo");
+  const completedTasks = todos.filter((item) => item.state === "done");
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle={"default"}></StatusBar>
       <Text style={styles.pageStyle}>Todo App</Text>
       <View style={styles.listView}>
         <Text style={styles.listTitle}>할 일</Text>
-        <TodoItem />
+        {todoTasks.length !== 0 ? (
+          <FlatList></FlatList>
+        ) : (
+          <Text>할 일이 없습니다.</Text>
+        )}
       </View>
       <View style={styles.seperator} />
       <View style={styles.listView}>

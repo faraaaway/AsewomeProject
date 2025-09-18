@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Text, Pressable } from "react-native";
 import CheckboxUnchecked from "../assets/checkbox-unchecked.svg";
-import Checkboxchecked from "../assets/checkbox-checked.svg";
+import CheckboxChecked from "../assets/checkbox-checked.svg";
 import DeleteIcon from "../assets/delete.svg";
 
 const TodoItem = () => {
@@ -9,7 +9,7 @@ const TodoItem = () => {
     <View style={styles.itemContainer}>
       <Pressable style={styles.itemCheckbox} hitSlop={10}>
         <CheckboxUnchecked />
-        <Checkboxchecked style={styles.itemCheckboxCheckedIcon} />
+        <CheckboxChecked style={styles.itemCheckboxCheckedIcon} />
       </Pressable>
       <Text style={[styles.itemText, styles.itemTextChecked]}>코딩하기</Text>
       <Pressable
