@@ -1,13 +1,22 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-import MainScreen from "./screens/MainScreen";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { NavigationContainer } from "@react-navigation/native";
+import MainScreen from "./screens/MainScreen";
+import LoginScreen from "./screens/LoginScreen";
 
 export default function App() {
+  const Stack = createNativeStackNavigator();
   return (
     <Provider store={store}>
-      <MainScreen />
+      <NavigationContainer>
+        <Stack.Navigator>
+          {/**<Stack.Screen name="Main" component={MainScreen} />*/}
+          <Stack.Screen name="Login" component={LoginScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </Provider>
   );
 }
